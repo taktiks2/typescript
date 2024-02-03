@@ -1,0 +1,33 @@
+{
+  "name": "express-rest-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch './src/**/*.ts' --exec ts-node --files ./src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "check-types": "tsc --noEmit",
+    "lint": "run-p -l -c --aggregate-output lint:*",
+    "lint:eslint": "eslint src/**/*.ts",
+    "lint:prettier": "prettier --check .",
+    "fix": "run-s -l -c fix:eslint fix:prettier",
+    "fix:eslint": "eslint --fix src/**/*.ts",
+    "fix:prettier": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "nodemon": "^3.0.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.2.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

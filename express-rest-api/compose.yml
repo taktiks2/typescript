@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16-bullseye
+    container_name: express-db
+    hostname: express-db
+    restart: always
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: express_db
+      TZ: Asia/Tokyo
+    ports:
+      - 45432:5432
