@@ -1,16 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import app from "./app";
 
-const prisma = new PrismaClient();
+const PORT = process.env.PORT ?? 3000;
 
-async function main() {
-  const allUsers = await prisma.users.findMany();
-  console.log(allUsers);
-}
-
-main()
-  .catch((e) => {
-    console.error(e);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+app.listen(PORT, () => {
+  console.log(`REST API server ready at: http://localhost:${PORT}`);
+});

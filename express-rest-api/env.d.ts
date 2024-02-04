@@ -1,10 +1,6 @@
-declare module "process" {
-  global {
-    namespace NodeJS {
-      interface ProcessEnv {
-        readonly DATABASE_URL: string;
-        readonly PORT: string;
-      }
-    }
+declare namespace NodeJS {
+  interface ProcessEnv {
+    readonly DATABASE_URL: string;
+    readonly PORT: string;
   }
 }

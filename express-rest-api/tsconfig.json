@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "skipLibCheck": true,
+    "esModuleInterop": true,
     "strict": true,
     "resolveJsonModule": true,
     "outDir": "./dist",
@@ -9,6 +10,6 @@
       "@/*": ["./src/*"],
     },
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "env.d.ts"],
   "exclude": ["node_modules"],
 }
