@@ -5,6 +5,7 @@
 	export let data: PageData;
 </script>
 
+<!--  FIXME: 何故か一覧画面でデータ取得できなくなった -->
 <h1>ユーザー一覧</h1>
 <a href="/user/new">新規ユーザー作成</a>
 <UserList users={data.users} />

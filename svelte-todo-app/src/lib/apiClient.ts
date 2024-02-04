@@ -16,6 +16,14 @@ class APIClient {
 		return this.post('/users', req);
 	}
 
+	public async updateUser(req: apiTypes.User): Promise<object> {
+		return this.put(`/users/${req.id}`, req);
+	}
+
+	public async deleteUser(id: number): Promise<object> {
+		return this.delete(`/users/${id}`);
+	}
+
 	private async get<T>(path: string): Promise<T> {
 		const res = await fetch(this.basePath + path, {
 			method: 'GET',
