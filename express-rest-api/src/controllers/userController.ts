@@ -6,14 +6,14 @@ const router = Router();
 
 router.get("/", async (_: Request, res: Response) => {
   const users = await prisma.users.findMany();
-  res.json({ users });
+  res.json(users);
 });
 
 router.get("/:id", async (req: Request, res: Response) => {
   const user = await prisma.users.findUnique({
     where: { id: parseInt(req.params.id) },
   });
-  res.json({ user });
+  res.json(user);
 });
 
 router.post("/", async (req: Request, res: Response) => {
@@ -25,7 +25,7 @@ router.post("/", async (req: Request, res: Response) => {
       age,
     },
   });
-  res.json({ user });
+  res.json(user);
 });
 
 router.put("/:id", async (req: Request, res: Response) => {
@@ -34,14 +34,14 @@ router.put("/:id", async (req: Request, res: Response) => {
     where: { id: parseInt(req.params.id) },
     data: { name, email, age },
   });
-  res.json({ user });
+  res.json(user);
 });
 
 router.delete("/:id", async (req: Request, res: Response) => {
   const user = await prisma.users.delete({
     where: { id: parseInt(req.params.id) },
   });
-  res.json({ user });
+  res.json(user);
 });
 
 export default router;
