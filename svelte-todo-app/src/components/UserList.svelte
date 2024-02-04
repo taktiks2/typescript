@@ -6,6 +6,6 @@
 
 <ul>
 	{#each users as user}
-		<li>名前:{user.name} 年齢:{user.age} e-mail:{user.email}</li>
+		<li>名前:{user.name}</li>
 	{/each}
 </ul>

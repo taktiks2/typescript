@@ -12,7 +12,7 @@ class APIClient {
 		return this.get('/users');
 	}
 
-	public async createUser(req: apiTypes.User): Promise<object> {
+	public async createUser(req: apiTypes.UserCreate): Promise<object> {
 		return this.post('/users', req);
 	}
 
