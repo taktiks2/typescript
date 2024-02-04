@@ -1,0 +1,6 @@
+<nav>
+	<a href="/">Home</a>
+	<a href="/user">User</a>
+</nav>
+
+<slot />
