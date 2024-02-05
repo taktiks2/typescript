@@ -11,9 +11,10 @@
 	// };
 
 	const handleDelete = async (id: number) => {
-		// TODO: アラートを出して確認する
-		await apiClient.deleteUser(id);
-		// TODO: ユーザー一覧を再取得する
+		if (confirm('本当に削除しますか？')) {
+			await apiClient.deleteUser(id);
+		}
+		users = await apiClient.getUsers();
 	};
 </script>
 
