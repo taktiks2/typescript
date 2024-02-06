@@ -12,6 +12,11 @@ export const actions = {
 
 		if (!name || !age || !email) return;
 
-		await apiClient.createUser({ name, age, email });
+		try {
+			await apiClient.createUser({ name, age, email });
+			return { success: true };
+		} catch (error) {
+			console.error('エラーが発生しました', error);
+		}
 	}
 } satisfies Actions;
