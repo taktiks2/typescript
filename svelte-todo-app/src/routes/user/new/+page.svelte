@@ -1,27 +1,22 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-
-	async function handleSubmit(event: Event) {
-		const form = event.target as HTMLFormElement;
-		const formData = new FormData(form);
-
-		const res = await fetch(form.action, {
-			method: 'POST',
-			body: formData
-		});
-
-		if (res.ok) {
-			goto('/user');
-		} else {
-			console.error('フォームの送信に失敗しました');
-		}
-	}
+	import { enhance } from '$app/forms';
 </script>
 
 <h1>ユーザー作成</h1>
 <a href="/user">ユーザー一覧</a>
 
-<form on:submit|preventDefault={handleSubmit}>
+<form
+	method="post"
+	use:enhance={() => {
+		// ここの処理はすべてクライアント
+		return async ({ result }) => {
+			if (result.type === 'redirect') {
+				await goto(result.location);
+			}
+		};
+	}}
+>
 	<label>
 		<input type="text" name="name" placeholder="名前" required />
 	</label>

@@ -1,5 +1,6 @@
 import type { Actions } from './$types';
 import { getAPIClient } from '$lib/apiClient';
+import { redirect } from '@sveltejs/kit';
 
 const apiClient = getAPIClient();
 
@@ -10,13 +11,11 @@ export const actions = {
 		const age = Number(data.get('age')) as number | null;
 		const email = data.get('email') as string | null;
 
+		// TODO: zodによるバリデーションを追加
 		if (!name || !age || !email) return;
 
-		try {
-			await apiClient.createUser({ name, age, email });
-			return { success: true };
-		} catch (error) {
-			console.error('エラーが発生しました', error);
-		}
+		// NOTE: 同一ユーザーを作成しようとしたら、クラッシュしたらDBがクラッシュした
+		await apiClient.createUser({ name, age, email });
+		redirect(303, '/user');
 	}
 } satisfies Actions;
