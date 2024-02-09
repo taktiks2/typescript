@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { getAPIClient } from '$lib/apiClient';
 	import type { User } from '$lib/apiTypes';
+	import { goto } from '$app/navigation';
 
 	const apiClient = getAPIClient();
 
 	export let users: User[];
 
-	// const handleEdit = async (id: number) => {
-	// 	// TODO: ユーザー編集ページに遷移する
-	// };
+	const handleEdit = async (id: number) => {
+		goto(`/user/${id}`);
+	};
 
 	const handleDelete = async (id: number) => {
 		if (confirm('本当に削除しますか？')) {
@@ -21,7 +22,9 @@
 <ul>
 	{#each users as user}
 		<li>名前:{user.name}</li>
-		<!-- <button on:click={() => handleEdit(user.id)}>編集</button> -->
+		<li>年齢:{user.age}</li>
+		<li>メールアドレス:{user.email}</li>
+		<button on:click={() => handleEdit(user.id)}>編集</button>
 		<button on:click={() => handleDelete(user.id)}>削除</button>
 	{/each}
 </ul>
