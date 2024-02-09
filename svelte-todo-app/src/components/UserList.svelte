@@ -8,10 +8,11 @@
 	export let users: User[];
 
 	const handleEdit = async (id: number) => {
-		goto(`/user/${id}`);
+		goto(`/user/edit/${id}`);
 	};
 
 	const handleDelete = async (id: number) => {
+		// TODO: バックエンドで削除のリクエストを実行する
 		if (confirm('本当に削除しますか？')) {
 			await apiClient.deleteUser(id);
 		}
@@ -21,6 +22,7 @@
 
 <ul>
 	{#each users as user}
+		<p>========================================</p>
 		<li>名前:{user.name}</li>
 		<li>年齢:{user.age}</li>
 		<li>メールアドレス:{user.email}</li>

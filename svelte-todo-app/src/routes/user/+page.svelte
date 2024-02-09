@@ -1,11 +1,8 @@
 <script lang="ts">
 	import UserList from '../../components/UserList.svelte';
-	import type { PageData } from './$types';
-
-	export let data: PageData;
+	import { page } from '$app/stores';
 </script>
 
-<!--  FIXME: 何故か一覧画面でデータ取得できなくなった -->
 <h1>ユーザー一覧</h1>
 <a href="/user/new">新規ユーザー作成</a>
-<UserList users={data.users} />
+<UserList users={$page.data.users} />

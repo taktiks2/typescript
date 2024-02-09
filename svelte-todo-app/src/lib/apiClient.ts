@@ -12,6 +12,10 @@ class APIClient {
 		return this.get('/users');
 	}
 
+	public async getUser(id: string): Promise<apiTypes.User> {
+		return this.get(`/users/${id}`);
+	}
+
 	public async createUser(req: apiTypes.UserCreate): Promise<object> {
 		return this.post('/users', req);
 	}
@@ -20,7 +24,7 @@ class APIClient {
 		return this.put(`/users/${req.id}`, req);
 	}
 
-	public async deleteUser(id: number): Promise<object> {
+	public async deleteUser(id: string): Promise<object> {
 		return this.delete(`/users/${id}`);
 	}
 
