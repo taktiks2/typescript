@@ -5,6 +5,8 @@
 </script>
 
 <h1>ユーザー編集</h1>
+<a href="/user">ユーザー一覧</a>
+
 <form
 	method="post"
 	use:enhance={() => {
