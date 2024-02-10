@@ -14,7 +14,7 @@
 	const handleDelete = async (id: number) => {
 		// TODO: バックエンドで削除のリクエストを実行する
 		if (confirm('本当に削除しますか？')) {
-			await apiClient.deleteUser(id);
+			await apiClient.deleteUser('' + id);
 		}
 		users = await apiClient.getUsers();
 	};

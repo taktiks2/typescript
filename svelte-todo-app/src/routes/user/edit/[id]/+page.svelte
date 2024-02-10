@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { enhance } from '$app/forms';
-	import { page } from '$app/stores';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 </script>
 
 <h1>ユーザー編集</h1>
@@ -18,13 +20,13 @@
 	}}
 >
 	<label>
-		<input type="text" name="name" value={$page.data.user.name} required />
+		<input type="text" name="name" value={data.user.name} required />
 	</label>
 	<label>
-		<input type="number" name="age" value={$page.data.user.age} required />
+		<input type="number" name="age" value={data.user.age} required />
 	</label>
 	<label>
-		<input type="email" name="email" value={$page.data.user.email} required />
+		<input type="email" name="email" value={data.user.email} required />
 	</label>
 	<button type="submit">確定</button>
 </form>

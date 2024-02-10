@@ -28,6 +28,26 @@ class APIClient {
 		return this.delete(`/users/${id}`);
 	}
 
+	public async getPosts(): Promise<apiTypes.Post[]> {
+		return this.get('/posts');
+	}
+
+	public async getPost(id: string): Promise<apiTypes.Post> {
+		return this.get(`/posts/${id}`);
+	}
+
+	public async createPost(req: apiTypes.PostCreate): Promise<object> {
+		return this.post('/posts', req);
+	}
+
+	public async updatePost(req: apiTypes.Post): Promise<object> {
+		return this.put(`/posts/${req.id}`, req);
+	}
+
+	public async deletePost(id: string): Promise<object> {
+		return this.delete(`/posts/${id}`);
+	}
+
 	private async get<T>(path: string): Promise<T> {
 		const res = await fetch(this.basePath + path, {
 			method: 'GET',
