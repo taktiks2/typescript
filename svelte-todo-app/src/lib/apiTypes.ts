@@ -3,25 +3,26 @@ export interface Post {
 	title: string;
 	text: string;
 	status: 'todo' | 'progress' | 'done';
-	postedAt: string;
+	createdAd: Date;
+	updatedAt: Date;
 }
 
 export interface PostCreate {
 	title: string;
 	text: string;
 	status: 'todo' | 'progress' | 'done';
-	postedAt: string;
 }
 
 export interface User {
 	id: number;
-	name: string;
-	age: number;
+	username: string;
 	email: string;
+	password: string;
+	createdAt: Date;
 }
 
 export interface UserCreate {
-	name: string;
-	age: number;
+	username: string;
 	email: string;
+	password: string;
 }

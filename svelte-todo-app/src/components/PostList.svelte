@@ -22,9 +22,13 @@
 
 {#each posts as post}
 	<div>
-		<p>========================================</p>
 		<h2>{post.title}</h2>
 		<p>{post.text}</p>
+		<select bind:value={post.status}>
+			<option value="todo">TODO</option>
+			<option value="progress">PROGRESS</option>
+			<option value="done">DONE</option>
+		</select>
 		<button on:click={() => handleEdit(post.id)}>編集</button>
 		<button on:click={() => handleDelete(post.id)}>削除</button>
 	</div>

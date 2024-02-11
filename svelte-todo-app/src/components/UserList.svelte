@@ -23,8 +23,7 @@
 <ul>
 	{#each users as user}
 		<p>========================================</p>
-		<li>名前:{user.name}</li>
-		<li>年齢:{user.age}</li>
+		<li>名前:{user.username}</li>
 		<li>メールアドレス:{user.email}</li>
 		<button on:click={() => handleEdit(user.id)}>編集</button>
 		<button on:click={() => handleDelete(user.id)}>削除</button>
