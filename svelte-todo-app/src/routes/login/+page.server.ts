@@ -30,7 +30,7 @@ export const actions = {
 			})
 			.setIssuedAt(iat)
 			.setNotBefore(iat)
-			.setExpirationTime('1m')
+			.setExpirationTime('1d')
 			.sign(new TextEncoder().encode(JWT_SECRET));
 
 		cookies.set('todo-auth-token', token, {

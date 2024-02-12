@@ -16,10 +16,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 };
 
 async function userAuth(event: RequestEvent): Promise<MiddlewareResult> {
-	if (event.url.pathname === '/login') {
-		return true;
-	}
-
 	const jwtSecret = JWT_SECRET;
 	if (!jwtSecret) {
 		return error(500, { message: 'Missing JWT_SECRET' });
@@ -29,14 +25,14 @@ async function userAuth(event: RequestEvent): Promise<MiddlewareResult> {
 
 	try {
 		await jose.jwtVerify(token, new TextEncoder().encode(jwtSecret));
-		if (event.url.pathname === '/login') {
-			return redirect(302, '/');
-		}
 	} catch (error) {
 		if (unauthPages.includes(event.url.pathname)) {
 			return true;
 		}
 		return redirect(302, '/login');
+	}
+	if (unauthPages.includes(event.url.pathname)) {
+		return redirect(302, '/');
 	}
 	return true;
 }
