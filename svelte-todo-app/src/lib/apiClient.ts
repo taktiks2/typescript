@@ -8,6 +8,10 @@ class APIClient {
 		this.basePath = apiEndpoint;
 	}
 
+	public async postPassword(email: string): Promise<apiTypes.User> {
+		return this.post('/users/password', { email });
+	}
+
 	public async getUsers(): Promise<apiTypes.User[]> {
 		return this.get('/users');
 	}
@@ -16,15 +20,15 @@ class APIClient {
 		return this.get(`/users/${id}`);
 	}
 
-	public async createUser(req: apiTypes.UserCreate): Promise<object> {
+	public async createUser(req: apiTypes.UserCreate): Promise<apiTypes.ApiResponse> {
 		return this.post('/users', req);
 	}
 
-	public async updateUser(req: apiTypes.User): Promise<object> {
+	public async updateUser(req: apiTypes.User): Promise<apiTypes.ApiResponse> {
 		return this.put(`/users/${req.id}`, req);
 	}
 
-	public async deleteUser(id: string): Promise<object> {
+	public async deleteUser(id: string): Promise<apiTypes.ApiResponse> {
 		return this.delete(`/users/${id}`);
 	}
 
@@ -36,15 +40,15 @@ class APIClient {
 		return this.get(`/posts/${id}`);
 	}
 
-	public async createPost(req: apiTypes.PostCreate): Promise<object> {
+	public async createPost(req: apiTypes.PostCreate): Promise<apiTypes.ApiResponse> {
 		return this.post('/posts', req);
 	}
 
-	public async updatePost(req: apiTypes.Post): Promise<object> {
+	public async updatePost(req: apiTypes.Post): Promise<apiTypes.ApiResponse> {
 		return this.put(`/posts/${req.id}`, req);
 	}
 
-	public async deletePost(id: string): Promise<object> {
+	public async deletePost(id: string): Promise<apiTypes.ApiResponse> {
 		return this.delete(`/posts/${id}`);
 	}
 

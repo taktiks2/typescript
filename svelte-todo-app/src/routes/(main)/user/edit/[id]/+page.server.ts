@@ -14,14 +14,14 @@ export const actions = {
 	default: async ({ request, params }) => {
 		const id = Number(params.id);
 		const data = await request.formData();
-		const name = data.get('name') as string | null;
-		const age = Number(data.get('age')) as number | null;
+		const username = data.get('username') as string | null;
 		const email = data.get('email') as string | null;
+		const password = data.get('password') as string | null;
 
 		// TODO: zodによるバリデーションを追加
-		if (!name || !age || !email) return;
+		if (!username || !email || !password) return;
 
-		await apiClient.updateUser({ id, name, age, email });
+		await apiClient.updateUser({ id, username, email, password });
 		redirect(303, '/user');
 	}
 } satisfies Actions;

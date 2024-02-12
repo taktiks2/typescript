@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import userController from "./controllers/userController";
+import postController from "./controllers/postController";
 import cors from "cors";
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(
 );
 
 app.use("/users", userController);
+app.use("/posts", postController);
 
 app.get("/", (_: Request, res: Response) => {
   res.writeHead(200, { "Content-Type": "text/plain" });

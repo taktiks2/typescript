@@ -1,15 +1,17 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { enhance } from '$app/forms';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 </script>
 
-<h1>ユーザー作成</h1>
+<h1>ユーザー編集</h1>
 <a href="/user">ユーザー一覧</a>
 
 <form
 	method="post"
 	use:enhance={() => {
-		// ここの処理はすべてクライアント
 		return async ({ result }) => {
 			if (result.type === 'redirect') {
 				await goto(result.location);
@@ -18,13 +20,10 @@
 	}}
 >
 	<label>
-		<input type="text" name="name" placeholder="名前" required />
+		<input type="text" name="name" value={data.user.username} required />
 	</label>
 	<label>
-		<input type="number" name="age" placeholder="年齢" required />
+		<input type="email" name="email" value={data.user.email} required />
 	</label>
-	<label>
-		<input type="email" name="email" placeholder="メールアドレス" required />
-	</label>
-	<button type="submit">作成</button>
+	<button type="submit">確定</button>
 </form>
