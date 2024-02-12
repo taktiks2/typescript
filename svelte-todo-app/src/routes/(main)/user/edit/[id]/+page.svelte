@@ -20,10 +20,7 @@
 	}}
 >
 	<label>
-		<input type="text" name="name" value={data.user.name} required />
-	</label>
-	<label>
-		<input type="number" name="age" value={data.user.age} required />
+		<input type="text" name="name" value={data.user.username} required />
 	</label>
 	<label>
 		<input type="email" name="email" value={data.user.email} required />
