@@ -40,11 +40,15 @@ class APIClient {
 		return this.get(`/posts/${id}`);
 	}
 
+	public async getPostsByAuthorId(authorId: number): Promise<apiTypes.Post[]> {
+		return this.get(`/posts/author/${authorId})}`);
+	}
+
 	public async createPost(req: apiTypes.PostCreate): Promise<apiTypes.ApiResponse> {
 		return this.post('/posts', req);
 	}
 
-	public async updatePost(req: apiTypes.Post): Promise<apiTypes.ApiResponse> {
+	public async updatePost(req: apiTypes.PostUpdate): Promise<apiTypes.ApiResponse> {
 		return this.put(`/posts/${req.id}`, req);
 	}
 
