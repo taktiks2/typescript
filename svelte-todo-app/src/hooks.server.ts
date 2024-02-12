@@ -1,4 +1,4 @@
-import { type Handle, type RequestEvent, error, redirect } from '@sveltejs/kit';
+import { type Handle, type RequestEvent, redirect } from '@sveltejs/kit';
 import { JWT_SECRET } from '$env/static/private';
 import * as jose from 'jose';
 
@@ -16,15 +16,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 };
 
 async function userAuth(event: RequestEvent): Promise<MiddlewareResult> {
-	const jwtSecret = JWT_SECRET;
-	if (!jwtSecret) {
-		return error(500, { message: 'Missing JWT_SECRET' });
-	}
-
 	const token = event.cookies.get('todo-auth-token') || '';
 
 	try {
-		await jose.jwtVerify(token, new TextEncoder().encode(jwtSecret));
+		await jose.jwtVerify(token, new TextEncoder().encode(JWT_SECRET));
 	} catch (error) {
 		if (unauthPages.includes(event.url.pathname)) {
 			return true;

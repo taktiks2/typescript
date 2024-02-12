@@ -16,6 +16,13 @@ router.get("/:id", async (req: Request, res: Response) => {
   return res.json(post);
 });
 
+router.get("/author/:authorId", async (req: Request, res: Response) => {
+  const posts = await prisma.posts.findMany({
+    where: { authorId: parseInt(req.params.authorId) },
+  });
+  return res.json(posts);
+});
+
 router.post("/", async (req: Request, res: Response) => {
   const { authorId, title, text, status } = req.body;
 

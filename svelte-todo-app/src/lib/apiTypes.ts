@@ -19,6 +19,14 @@ export interface PostCreate {
 	status: 'todo' | 'progress' | 'done';
 }
 
+export interface PostUpdate {
+	id: number;
+	authorId: number;
+	title: string;
+	text: string;
+	status: 'todo' | 'progress' | 'done';
+}
+
 export interface User {
 	id: number;
 	username: string;
