@@ -7,23 +7,15 @@ type MiddlewareResult = true | Response;
 const unauthPages = ['/login', '/register'];
 
 export const handle: Handle = async ({ event, resolve }) => {
-	console.log('middleware start');
 	const response = await resolve(event);
-
-	console.log('middleware userAuth start');
 	const userAuthResult = await userAuth(event);
-
-	console.log('middleware before if');
 	if (userAuthResult !== true) {
 		return userAuthResult;
 	}
-
-	console.log('middleware before response');
 	return response;
 };
 
 async function userAuth(event: RequestEvent): Promise<MiddlewareResult> {
-	console.log('middleware login start');
 	if (event.url.pathname === '/login') {
 		return true;
 	}
@@ -33,12 +25,10 @@ async function userAuth(event: RequestEvent): Promise<MiddlewareResult> {
 		return error(500, { message: 'Missing JWT_SECRET' });
 	}
 
-	const token = event.cookies.get('todos-auth-token') || '';
+	const token = event.cookies.get('todo-auth-token') || '';
 
-	let obj: { userId: string };
 	try {
-		const { payload } = await jose.jwtVerify(token, new TextEncoder().encode(jwtSecret));
-		obj = payload as any;
+		await jose.jwtVerify(token, new TextEncoder().encode(jwtSecret));
 		if (event.url.pathname === '/login') {
 			return redirect(302, '/');
 		}
@@ -48,6 +38,5 @@ async function userAuth(event: RequestEvent): Promise<MiddlewareResult> {
 		}
 		return redirect(302, '/login');
 	}
-	event.setHeaders({ 'auth-user-id': obj.userId });
 	return true;
 }

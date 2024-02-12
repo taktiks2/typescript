@@ -1,5 +1,10 @@
+export interface ApiResponse {
+	message: string;
+}
+
 export interface Post {
 	id: number;
+	authorId: number;
 	title: string;
 	text: string;
 	status: 'todo' | 'progress' | 'done';
@@ -8,6 +13,7 @@ export interface Post {
 }
 
 export interface PostCreate {
+	authorId: number;
 	title: string;
 	text: string;
 	status: 'todo' | 'progress' | 'done';
