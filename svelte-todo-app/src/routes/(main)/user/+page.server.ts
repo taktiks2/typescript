@@ -34,8 +34,7 @@ export const actions = {
 		// TODO: zodによるバリデーションを追加
 		if (!id || !authorId || !title || !text || !status) return;
 
-		const res = await apiClient.updatePost({ id, authorId, title, text, status });
-		console.log(res);
+		await apiClient.updatePost({ id, authorId, title, text, status });
 	},
 	delete: async ({ request }) => {
 		const data = await request.formData();
