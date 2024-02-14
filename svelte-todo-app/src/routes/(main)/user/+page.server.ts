@@ -35,6 +35,7 @@ export const actions = {
 		if (!id || !authorId || !title || !text || !status) return;
 
 		await apiClient.updatePost({ id, authorId, title, text, status });
+		return;
 	},
 	delete: async ({ request }) => {
 		const data = await request.formData();
