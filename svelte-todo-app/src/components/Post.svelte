@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { Post } from '$lib/apiTypes';
+
 	export let post: Post;
+	export let onUpdate: () => Promise<void>;
+
 	let isEditing = false;
 
 	function handleModeChange() {
@@ -9,7 +12,17 @@
 	}
 </script>
 
-<form method="post" use:enhance>
+<form
+	method="post"
+	use:enhance={() => {
+		return async ({ result }) => {
+			if (result.type === 'success') {
+				await onUpdate();
+				handleModeChange();
+			}
+		};
+	}}
+>
 	<input type="hidden" name="id" value={post.id} />
 	<input type="hidden" name="authorId" value={post.authorId} />
 	{#if isEditing}
