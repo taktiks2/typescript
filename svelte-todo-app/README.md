@@ -36,3 +36,19 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+
+#### 起動方法
+docker desktopの起動
+```
+// express-rest-api
+npm run dev
+
+// svelte-todo-app
+npm run dev
+```
+
+#### ログイン方法
+
+email: takeru-dev@example.com
+pw: 12341234abcd
