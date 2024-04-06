@@ -1,47 +1,30 @@
-import Phaser from "phaser";
+import { Boot } from './scenes/Boot';
+import { Game as MainGame } from './scenes/Game';
+import { GameOver } from './scenes/GameOver';
+import { MainMenu } from './scenes/MainMenu';
+import { Preloader } from './scenes/Preloader';
 
-class TestScene extends Phaser.Scene {
-  constructor() {
-    super("testScene");
-  }
-  preload() {
-    this.load.setBaseURL("https://labs.phaser.io");
+import { Game, Types } from "phaser";
 
-    this.load.image("sky", "assets/skies/space3.png");
-    this.load.image("logo", "assets/sprites/phaser3-logo.png");
-    this.load.image("red", "assets/particles/red.png");
-  }
-  create() {
-    this.add.image(400, 300, "sky");
-
-    const particles = this.add.particles(0, 0, "red", {
-      speed: 100,
-      scale: { start: 1, end: 0 },
-      blendMode: "ADD",
-    });
-
-    const logo = this.physics.add.image(400, 100, "logo");
-
-    logo.setVelocity(100, 200);
-    logo.setBounce(1, 1);
-    logo.setCollideWorldBounds(true);
-
-    particles.startFollow(logo);
-  }
-}
-
-const config: Phaser.Types.Core.GameConfig = {
-  type: Phaser.AUTO,
-  width: 800,
-  height: 600,
-  parent: "app",
-  physics: {
-    default: "arcade",
-    arcade: {
-      gravity: { y: 200, x: 0 },
+//  Find out more information about the Game Config at:
+//  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
+const config: Types.Core.GameConfig = {
+    type: Phaser.AUTO,
+    width: 1024,
+    height: 768,
+    parent: 'game-container',
+    backgroundColor: '#028af8',
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
     },
-  },
-  scene: TestScene,
+    scene: [
+        Boot,
+        Preloader,
+        MainMenu,
+        MainGame,
+        GameOver
+    ]
 };
 
-const game = new Phaser.Game(config);
+export default new Game(config);
