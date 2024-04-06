@@ -1,6 +1,8 @@
 import { SampleGame } from "./scenes/SampleGame";
+import { TicTacToe } from "./scenes/TicTacToe";
 import { Game, Types } from "phaser";
 import { W_WIDTH, W_HEIGHT } from "./lib/constants";
+import { changeScene } from "./lib/utils";
 
 const config: Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -12,7 +14,7 @@ const config: Types.Core.GameConfig = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  scene: [SampleGame],
+  scene: [SampleGame, TicTacToe],
   // NOTE: physicsを使うときには必須
   physics: {
     default: "arcade",
@@ -23,4 +25,12 @@ const config: Types.Core.GameConfig = {
   },
 };
 
-export default new Game(config);
+const game = new Game(config);
+
+const params = new URLSearchParams(location.search);
+const scene = params.get("scene");
+game.events.once("ready", () => {
+  changeScene(game, scene ? scene : "SampleGame");
+});
+
+export default game;

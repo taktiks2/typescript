@@ -1,5 +1,6 @@
 import { Scene } from "phaser";
 import { W_WIDTH, W_HEIGHT } from "../lib/constants";
+import { changeScene } from "../lib/utils";
 
 export class SampleGame extends Scene {
   camera: Phaser.Cameras.Scene2D.Camera;
@@ -10,7 +11,7 @@ export class SampleGame extends Scene {
   stars: Phaser.Physics.Arcade.Group;
 
   constructor() {
-    super("Game");
+    super("SampleGame");
   }
 
   preload() {
@@ -48,6 +49,13 @@ export class SampleGame extends Scene {
     this.physics.add.overlap(this.player, this.stars, (_, star) => {
       // 衝突判定時の処理
       star.destroy();
+    });
+
+    // 次のシーンへ遷移できるテキストの追加
+    const text = this.add.text(W_WIDTH / 2, W_HEIGHT / 2, "Next Scene");
+    text.setInteractive();
+    text.on("pointerdown", () => {
+      changeScene(this.game, "TicTacToe");
     });
   }
 
