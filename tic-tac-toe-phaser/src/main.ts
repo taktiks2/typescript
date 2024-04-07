@@ -15,6 +15,9 @@ const config: Types.Core.GameConfig = {
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
   scene: [SampleGame, TicTacToe],
+  fps: {
+    target: 24,
+  },
   // NOTE: physicsを使うときには必須
   physics: {
     default: "arcade",
