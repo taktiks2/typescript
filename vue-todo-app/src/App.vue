@@ -3,10 +3,9 @@ import Count from './components/Count.vue'
 import InputText from './components/InputText.vue'
 import IfCondition from './components/IfCondition.vue'
 import TodoList from './components/TodoList.vue'
+import OptionCount from './components/OptionCount.vue'
 
-// NOTE: step-8までやった
-// TODO: step-9からやる
-// https://ja.vuejs.org/tutorial/#step-9
+// 次はInputTextをOptions APIで書き換える
 </script>
 
 <template>
@@ -14,4 +13,5 @@ import TodoList from './components/TodoList.vue'
   <InputText />
   <IfCondition />
   <TodoList />
+  <OptionCount />
 </template>
