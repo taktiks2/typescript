@@ -1,5 +1,5 @@
 import { createRoute, z } from "@hono/zod-openapi";
-import { BodySchema, UserSchema } from "./schemas";
+import { BodySchema, UserSchema } from "./schema";
 
 export const getUsers = createRoute({
   method: "get",
@@ -14,6 +14,7 @@ export const getUsers = createRoute({
       },
     },
   },
+  tags: ["users"],
 });
 
 export const postUsers = createRoute({
@@ -38,4 +39,5 @@ export const postUsers = createRoute({
       },
     },
   },
+  tags: ["users"],
 });

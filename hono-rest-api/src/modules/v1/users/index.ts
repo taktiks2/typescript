@@ -1,32 +1,19 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
-import { postUsers, getUsers } from "./routes";
+import { postUsers, getUsers } from "./route";
+import { User } from "../../../models/user";
 
 const app = new OpenAPIHono();
 
-app.openapi(getUsers, (c) => {
-  console.log("got users");
-  return c.json(
-    [
-      {
-        id: "1",
-        name: "test",
-        email: "test@example.com",
-        role: "admin" as const,
-      },
-      {
-        id: "2",
-        name: "test",
-        email: "test@example.com",
-        role: "admin" as const,
-      },
-    ],
-    200,
-  );
+app.openapi(getUsers, async (c) => {
+  const users = await User.getAll();
+  return c.json(users, 200);
 });
 
-app.openapi(postUsers, (c) => {
-  console.log("user created");
-  return c.text("test", 200);
+app.openapi(postUsers, async (c) => {
+  const body = await c.req.json();
+  const user = await User.create(body);
+  console.info("user created", user);
+  return c.text("success", 200);
 });
 
 export default app;
