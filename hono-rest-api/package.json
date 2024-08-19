@@ -2,6 +2,7 @@
   "name": "hono-rest-api",
   "scripts": {
     "dev": "bun run --watch src/app.ts",
+    "studio": "drizzle-kit studio",
     "generate": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate"
   },
