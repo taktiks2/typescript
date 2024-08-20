@@ -4,8 +4,6 @@ export const BodySchema = z.object({
   userId: z.string(),
   title: z.string(),
   content: z.string(),
-  createdAt: z.string().datetime(),
-  updatedAt: z.string().datetime(),
 });
 
 export const PostSchema = z.object({

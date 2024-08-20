@@ -12,8 +12,7 @@ app.openapi(getPosts, async (c) => {
 app.openapi(postPosts, async (c) => {
   const body = await c.req.json();
   const post = await Post.create(body);
-  console.info("post created", post);
-  return c.text("success", 200);
+  return c.json(post, 200);
 });
 
 export default app;

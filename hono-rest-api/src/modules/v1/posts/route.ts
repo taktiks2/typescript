@@ -33,8 +33,8 @@ export const postPosts = createRoute({
     200: {
       description: "Post created",
       content: {
-        "text/plain": {
-          schema: z.string(),
+        "application/json": {
+          schema: PostSchema,
         },
       },
     },

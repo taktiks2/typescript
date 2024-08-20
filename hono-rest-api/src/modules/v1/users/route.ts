@@ -33,8 +33,8 @@ export const postUsers = createRoute({
     200: {
       description: "User created",
       content: {
-        "text/plain": {
-          schema: z.string(),
+        "application/json": {
+          schema: UserSchema,
         },
       },
     },

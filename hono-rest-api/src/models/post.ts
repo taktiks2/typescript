@@ -29,8 +29,19 @@ export class Post {
   }
 
   static async create(post: InsertPost) {
-    const res = await db.insert(posts).values(post).returning().execute();
+    const res = await db
+      .insert(posts)
+      .values(this.formatter(post))
+      .returning()
+      .execute();
     return new Post(res[0]).params();
+  }
+
+  private static formatter(post: InsertPost) {
+    return {
+      ...post,
+      updatedAt: new Date(),
+    };
   }
 
   static async getAll() {

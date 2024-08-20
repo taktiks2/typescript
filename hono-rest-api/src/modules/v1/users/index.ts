@@ -12,8 +12,7 @@ app.openapi(getUsers, async (c) => {
 app.openapi(postUsers, async (c) => {
   const body = await c.req.json();
   const user = await User.create(body);
-  console.info("user created", user);
-  return c.text("success", 200);
+  return c.json(user, 200);
 });
 
 export default app;
