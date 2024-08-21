@@ -2,9 +2,9 @@ import { createRoute } from "@hono/zod-openapi";
 import { ParamsSchema, PutBodySchema } from "./schema";
 import { UserSchema } from "../schema";
 
-export const getUserById = createRoute({
+export const GET = createRoute({
   method: "get",
-  path: "/v1/users/{id}",
+  path: "/{id}",
   request: {
     params: ParamsSchema,
   },
@@ -21,9 +21,9 @@ export const getUserById = createRoute({
   tags: ["users"],
 });
 
-export const putUser = createRoute({
+export const PUT = createRoute({
   method: "put",
-  path: "/v1/users/{id}",
+  path: "/{id}",
   request: {
     body: {
       content: {
@@ -46,9 +46,9 @@ export const putUser = createRoute({
   tags: ["users"],
 });
 
-export const deleteUser = createRoute({
+export const DELETE = createRoute({
   method: "delete",
-  path: "/v1/users/{id}",
+  path: "/{id}",
   request: {
     params: ParamsSchema,
   },

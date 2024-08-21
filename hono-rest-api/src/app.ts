@@ -1,7 +1,6 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { swaggerUI } from "@hono/swagger-ui";
-import users from "./modules/v1/users";
-import posts from "./modules/v1/posts";
+import v1 from "./modules/v1";
 import { helloMiddleware } from "./middlewares/helloMiddle";
 
 const app = new OpenAPIHono();
@@ -10,8 +9,7 @@ const app = new OpenAPIHono();
 app.use(helloMiddleware);
 
 // NOTE: Modules
-app.route("/", users);
-app.route("/", posts);
+app.route("/", v1);
 
 // NOTE: Swagger UI
 app.doc("/doc", {
