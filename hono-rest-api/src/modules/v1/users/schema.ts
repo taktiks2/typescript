@@ -1,6 +1,6 @@
 import { z } from "@hono/zod-openapi";
 
-export const BodySchema = z.object({
+export const PostBodySchema = z.object({
   name: z.string(),
   email: z.string().email(),
   age: z.number(),

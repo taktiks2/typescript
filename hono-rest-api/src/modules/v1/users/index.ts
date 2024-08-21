@@ -1,8 +1,11 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { postUsers, getUsers } from "./route";
 import { User } from "../../../models/user";
+import id from "./id";
 
 const app = new OpenAPIHono();
+
+app.route("/", id);
 
 app.openapi(getUsers, async (c) => {
   const users = await User.getAll();
