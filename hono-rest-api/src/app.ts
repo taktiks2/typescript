@@ -9,7 +9,7 @@ const app = new OpenAPIHono();
 app.use(helloMiddleware);
 
 // NOTE: Modules
-app.route("/", v1);
+app.route("/v1", v1);
 
 // NOTE: Swagger UI
 app.doc("/doc", {

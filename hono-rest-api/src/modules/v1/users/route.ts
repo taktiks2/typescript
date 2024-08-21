@@ -3,7 +3,7 @@ import { PostBodySchema, UserSchema } from "./schema";
 
 export const GET = createRoute({
   method: "get",
-  path: "/users",
+  path: "/",
   responses: {
     200: {
       description: "List of users",
@@ -19,7 +19,7 @@ export const GET = createRoute({
 
 export const POST = createRoute({
   method: "post",
-  path: "/users",
+  path: "/",
   request: {
     body: {
       content: {

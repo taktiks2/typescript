@@ -4,7 +4,7 @@ import { UserSchema } from "../schema";
 
 export const GET = createRoute({
   method: "get",
-  path: "/{id}",
+  path: "/",
   request: {
     params: ParamsSchema,
   },
@@ -23,7 +23,7 @@ export const GET = createRoute({
 
 export const PUT = createRoute({
   method: "put",
-  path: "/{id}",
+  path: "/",
   request: {
     body: {
       content: {
@@ -48,7 +48,7 @@ export const PUT = createRoute({
 
 export const DELETE = createRoute({
   method: "delete",
-  path: "/{id}",
+  path: "/",
   request: {
     params: ParamsSchema,
   },

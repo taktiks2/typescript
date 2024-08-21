@@ -4,7 +4,7 @@ import posts from "./posts";
 
 const app = new OpenAPIHono();
 
-app.route("/v1", users);
-app.route("/v1", posts);
+app.route("/users", users);
+app.route("/posts", posts);
 
 export default app;

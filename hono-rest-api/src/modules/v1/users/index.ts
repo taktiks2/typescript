@@ -5,7 +5,7 @@ import id from "./id";
 
 const app = new OpenAPIHono();
 
-app.route("/users", id);
+app.route("/{id}", id);
 
 app.openapi(GET, async (c) => {
   const users = await User.getAll();

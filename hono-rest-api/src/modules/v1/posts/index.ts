@@ -1,15 +1,15 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
-import { postPosts, getPosts } from "./route";
+import { GET, POST } from "./route";
 import { Post } from "../../../models/post";
 
 const app = new OpenAPIHono();
 
-app.openapi(getPosts, async (c) => {
+app.openapi(GET, async (c) => {
   const posts = await Post.getAll();
   return c.json(posts, 200);
 });
 
-app.openapi(postPosts, async (c) => {
+app.openapi(POST, async (c) => {
   const body = await c.req.json();
   const post = await Post.create(body);
   return c.json(post, 200);
