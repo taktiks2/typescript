@@ -5,7 +5,7 @@ import id from "./id";
 
 const app = new OpenAPIHono();
 
-app.route("/{id}", id);
+app.route("/:id", id);
 
 app.openapi(GET, async (c) => {
   const posts = await Post.getAll();
