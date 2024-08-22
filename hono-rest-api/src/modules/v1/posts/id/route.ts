@@ -1,7 +1,7 @@
 import { createRoute } from "@hono/zod-openapi";
 import { ParamsSchema } from "../../schema";
-import { UserSchema } from "../schema";
 import { PutBodySchema } from "./schema";
+import { PostSchema } from "../schema";
 
 export const GET = createRoute({
   method: "get",
@@ -11,15 +11,15 @@ export const GET = createRoute({
   },
   responses: {
     200: {
-      description: "User found",
+      description: "Post found",
       content: {
         "application/json": {
-          schema: UserSchema,
+          schema: PostSchema,
         },
       },
     },
   },
-  tags: ["users"],
+  tags: ["posts"],
 });
 
 export const PUT = createRoute({
@@ -36,15 +36,15 @@ export const PUT = createRoute({
   },
   responses: {
     200: {
-      description: "User updated",
+      description: "Post updated",
       content: {
         "application/json": {
-          schema: UserSchema,
+          schema: PostSchema,
         },
       },
     },
   },
-  tags: ["users"],
+  tags: ["posts"],
 });
 
 export const DELETE = createRoute({
@@ -55,8 +55,8 @@ export const DELETE = createRoute({
   },
   responses: {
     200: {
-      description: "User deleted",
+      description: "Post deleted",
     },
   },
-  tags: ["users"],
+  tags: ["posts"],
 });
