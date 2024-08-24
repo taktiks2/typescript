@@ -1,6 +1,7 @@
-import { createMiddleware } from "hono/factory";
+import { createMiddleware } from 'hono/factory';
 
 export const helloMiddleware = createMiddleware(async (c, next) => {
-  console.info("Hello Middleware");
+  // eslint-disable-next-line no-console
+  console.info('Hello Middleware');
   await next();
 });

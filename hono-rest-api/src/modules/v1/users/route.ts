@@ -1,29 +1,29 @@
-import { createRoute } from "@hono/zod-openapi";
-import { PostBodySchema, UserSchema } from "./schema";
+import { createRoute } from '@hono/zod-openapi';
+import { PostBodySchema, UserSchema } from './schema';
 
 export const GET = createRoute({
-  method: "get",
-  path: "/",
+  method: 'get',
+  path: '/',
   responses: {
     200: {
-      description: "List of users",
+      description: 'List of users',
       content: {
-        "application/json": {
+        'application/json': {
           schema: UserSchema.array(),
         },
       },
     },
   },
-  tags: ["users"],
+  tags: ['users'],
 });
 
 export const POST = createRoute({
-  method: "post",
-  path: "/",
+  method: 'post',
+  path: '/',
   request: {
     body: {
       content: {
-        "application/json": {
+        'application/json': {
           schema: PostBodySchema,
         },
       },
@@ -31,13 +31,13 @@ export const POST = createRoute({
   },
   responses: {
     200: {
-      description: "User created",
+      description: 'User created',
       content: {
-        "application/json": {
+        'application/json': {
           schema: UserSchema,
         },
       },
     },
   },
-  tags: ["users"],
+  tags: ['users'],
 });

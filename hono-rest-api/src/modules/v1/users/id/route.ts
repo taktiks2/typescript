@@ -1,34 +1,34 @@
-import { createRoute } from "@hono/zod-openapi";
-import { ParamsSchema } from "../../schema";
-import { UserSchema } from "../schema";
-import { PutBodySchema } from "./schema";
+import { createRoute } from '@hono/zod-openapi';
+import { ParamsSchema } from '../../schema';
+import { UserSchema } from '../schema';
+import { PutBodySchema } from './schema';
 
 export const GET = createRoute({
-  method: "get",
-  path: "/",
+  method: 'get',
+  path: '/',
   request: {
     params: ParamsSchema,
   },
   responses: {
     200: {
-      description: "User found",
+      description: 'User found',
       content: {
-        "application/json": {
+        'application/json': {
           schema: UserSchema,
         },
       },
     },
   },
-  tags: ["users"],
+  tags: ['users'],
 });
 
 export const PUT = createRoute({
-  method: "put",
-  path: "/",
+  method: 'put',
+  path: '/',
   request: {
     body: {
       content: {
-        "application/json": {
+        'application/json': {
           schema: PutBodySchema,
         },
       },
@@ -36,27 +36,27 @@ export const PUT = createRoute({
   },
   responses: {
     200: {
-      description: "User updated",
+      description: 'User updated',
       content: {
-        "application/json": {
+        'application/json': {
           schema: UserSchema,
         },
       },
     },
   },
-  tags: ["users"],
+  tags: ['users'],
 });
 
 export const DELETE = createRoute({
-  method: "delete",
-  path: "/",
+  method: 'delete',
+  path: '/',
   request: {
     params: ParamsSchema,
   },
   responses: {
     200: {
-      description: "User deleted",
+      description: 'User deleted',
     },
   },
-  tags: ["users"],
+  tags: ['users'],
 });

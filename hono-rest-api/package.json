@@ -2,9 +2,12 @@
   "name": "hono-rest-api",
   "scripts": {
     "dev": "bun run --watch src/app.ts",
-    "studio": "drizzle-kit studio",
-    "generate": "drizzle-kit generate",
-    "migrate": "drizzle-kit migrate"
+    "tsc": "tsc",
+    "lint": "eslint src/",
+    "lint:fix": "eslint --fix src/ && prettier --write src/",
+    "db:studio": "drizzle-kit studio",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "@hono/swagger-ui": "^0.4.0",
@@ -15,8 +18,16 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.1",
     "@types/bun": "latest",
     "@types/pg": "^8.11.6",
-    "drizzle-kit": "^0.24.0"
+    "drizzle-kit": "^0.24.0",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-spellcheck": "^0.0.20",
+    "globals": "^15.9.0",
+    "prettier": "3.3.3",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.2.0"
   }
 }

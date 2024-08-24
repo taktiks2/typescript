@@ -1,11 +1,11 @@
-import { OpenAPIHono } from "@hono/zod-openapi";
-import { GET, POST } from "./route";
-import { Post } from "../../../models/post";
-import id from "./id";
+import { OpenAPIHono } from '@hono/zod-openapi';
+import { GET, POST } from './route';
+import { Post } from '../../../models/post';
+import id from './id';
 
 const app = new OpenAPIHono();
 
-app.route("/:id", id);
+app.route('/:id', id);
 
 app.openapi(GET, async (c) => {
   const posts = await Post.getAll();

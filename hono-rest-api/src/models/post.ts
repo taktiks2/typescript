@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
-import db from "../services/db";
-import { SelectPost, InsertPost, posts } from "../services/db/schema";
+import { eq } from 'drizzle-orm';
+import db from '../services/db';
+import { SelectPost, InsertPost, posts } from '../services/db/schema';
 
 export class Post {
   id: string;
@@ -10,8 +10,8 @@ export class Post {
   createdAt: Date;
   updatedAt: Date;
   constructor(post: SelectPost) {
-    this.id = "" + post.id;
-    this.userId = "" + post.userId;
+    this.id = '' + post.id;
+    this.userId = '' + post.userId;
     this.title = post.title;
     this.content = post.content;
     this.createdAt = post.createdAt;

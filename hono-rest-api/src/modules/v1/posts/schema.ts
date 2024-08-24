@@ -1,4 +1,4 @@
-import { z } from "@hono/zod-openapi";
+import { z } from '@hono/zod-openapi';
 
 export const BodySchema = z.object({
   userId: z.string(),

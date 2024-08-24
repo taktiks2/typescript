@@ -1,15 +1,15 @@
-import { eq } from "drizzle-orm";
-import db from "../services/db";
-import { SelectUser, InsertUser, users } from "../services/db/schema";
+import { eq } from 'drizzle-orm';
+import db from '../services/db';
+import { SelectUser, InsertUser, users } from '../services/db/schema';
 
 export class User {
   id: string;
   name: string;
   email: string;
   age: number;
-  role: "admin" | "editor" | "viewer";
+  role: 'admin' | 'editor' | 'viewer';
   constructor(user: SelectUser) {
-    this.id = "" + user.id;
+    this.id = '' + user.id;
     this.name = user.name;
     this.email = user.email;
     this.age = user.age;
@@ -42,12 +42,7 @@ export class User {
   }
 
   static async update(id: number, user: Partial<InsertUser>) {
-    const res = await db
-      .update(users)
-      .set(user)
-      .where(eq(users.id, id))
-      .returning()
-      .execute();
+    const res = await db.update(users).set(user).where(eq(users.id, id)).returning().execute();
     return new User(res[0]).params();
   }
 
