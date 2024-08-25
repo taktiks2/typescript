@@ -9,12 +9,15 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "lint": "eslint --fix src/",
     "format": "prettier --write src/",
     "update:doc": "bun scripts/generate-client-doc.ts",
-    "update:client": "openapi-generator generate -i services/doc.json -g typescript-fetch -o services/open-api"
+    "update:client": "openapi-generator generate -i custom_modules/open-api/doc.json -g typescript-fetch -o custom_modules/open-api/src",
+    "build:open-api": "cd custom_modules/open-api && bun run build",
+    "update:open-api": "run-s update:doc update:client build:open-api"
   },
   "dependencies": {
+    "open-api": "link:open-api",
     "pinia": "^2.1.7",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
@@ -26,10 +29,10 @@
     "@types/bun": "latest",
     "@types/node": "^20.14.5",
     "@vitejs/plugin-vue": "^5.0.5",
-    "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/tsconfig": "^0.5.1",
     "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-spellcheck": "^0.0.20",
     "eslint-plugin-vue": "^9.27.0",
     "globals": "^15.9.0",

@@ -37,3 +37,10 @@ bun build
 ```sh
 bun lint
 ```
+
+### open-apiのアップデート方法
+
+```sh
+bun update:open-api
+
+```

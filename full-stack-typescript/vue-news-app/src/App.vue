@@ -1,22 +1,24 @@
-<script setup lang="ts">
+<script lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
+import { useAPIClientStore } from '@/stores/apiClientStore';
+export default {
+  mounted() {
+    const { initAPIClient } = useAPIClientStore();
+    initAPIClient();
+  },
+};
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <div>hello world</div>
       </nav>
     </div>
   </header>
-
   <RouterView />
 </template>
 
