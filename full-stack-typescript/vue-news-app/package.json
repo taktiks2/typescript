@@ -10,7 +10,9 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "update:doc": "bun scripts/generate-client-doc.ts",
+    "update:client": "openapi-generator generate -i services/doc.json -g typescript-fetch -o services/open-api"
   },
   "dependencies": {
     "pinia": "^2.1.7",
@@ -40,4 +42,3 @@
   },
   "module": "index.ts"
 }
-
