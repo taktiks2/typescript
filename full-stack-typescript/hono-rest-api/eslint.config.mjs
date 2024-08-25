@@ -25,7 +25,7 @@ export default [
         'warn',
         {
           minLength: 4,
-          skipWords: ['hono', 'middlewares', 'openapi', ''],
+          skipWords: ['hono', 'middlewares', 'openapi', 'cors'],
         },
       ],
     },
