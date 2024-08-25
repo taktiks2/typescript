@@ -26,6 +26,7 @@ export const PUT = createRoute({
   method: 'put',
   path: '/',
   request: {
+    params: ParamsSchema,
     body: {
       content: {
         'application/json': {

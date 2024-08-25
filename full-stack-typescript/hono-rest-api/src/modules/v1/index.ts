@@ -1,5 +1,5 @@
 import { OpenAPIHono } from '@hono/zod-openapi';
-import users from 'modules/v1/users;
+import users from './users';
 import posts from './posts';
 
 const app = new OpenAPIHono();
