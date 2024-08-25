@@ -1,7 +1,7 @@
 import { OpenAPIHono } from '@hono/zod-openapi';
-import { GET, POST } from './route';
-import { Post } from '../../../models/post';
-import id from './id';
+import { GET, POST } from '@/modules/v1/posts/route';
+import { Post } from '@/models/post';
+import id from '@/modules/v1/posts/id';
 
 const app = new OpenAPIHono();
 

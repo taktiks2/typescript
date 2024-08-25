@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
-import db from '../services/db';
-import { SelectUser, InsertUser, users } from '../services/db/schema';
+import db from '@/services/db';
+import { SelectUser, InsertUser, users } from '@/services/db/schema';
 
 export class User {
   id: string;

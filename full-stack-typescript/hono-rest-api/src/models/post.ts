@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
-import db from '../services/db';
-import { SelectPost, InsertPost, posts } from '../services/db/schema';
+import db from '@/services/db';
+import { SelectPost, InsertPost, posts } from '@/services/db/schema';
 
 export class Post {
   id: string;

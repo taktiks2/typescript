@@ -1,6 +1,6 @@
 import { OpenAPIHono } from '@hono/zod-openapi';
-import { GET, PUT, DELETE } from './route';
-import { Post } from '../../../../models/post';
+import { GET, PUT, DELETE } from '@/modules/v1/posts/id/route';
+import { Post } from '@/models/post';
 
 const app = new OpenAPIHono();
 

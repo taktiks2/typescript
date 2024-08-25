@@ -1,13 +1,16 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Client } from 'pg';
+import { getConfig } from '@/utils/config';
+
+const config = getConfig();
 
 // NOTE: DB接続用のクライアント作成
 const client = new Client({
-  host: '127.0.0.1',
-  port: 5432,
-  user: 'user',
-  password: 'userpassword',
-  database: 'userdatabase',
+  host: config.dbHost,
+  port: config.dbPort,
+  user: config.dbUser,
+  password: config.dbPassword,
+  database: config.dbDatabase,
   ssl: false, // NOTE: docker containerに接続する場合はfalse
 });
 

@@ -1,5 +1,5 @@
 import { createRoute } from '@hono/zod-openapi';
-import { PostBodySchema, UserSchema } from './schema';
+import { PostBodySchema, UserSchema } from '@/modules/v1/users/schema';
 
 export const GET = createRoute({
   method: 'get',

@@ -1,7 +1,7 @@
 import { createRoute } from '@hono/zod-openapi';
-import { ParamsSchema } from '../../schema';
-import { UserSchema } from '../schema';
-import { PutBodySchema } from './schema';
+import { ParamsSchema } from '@/modules/v1/schema';
+import { UserSchema } from '@/modules/v1/users/schema';
+import { PutBodySchema } from '@/modules/v1/users/id/schema';
 
 export const GET = createRoute({
   method: 'get',

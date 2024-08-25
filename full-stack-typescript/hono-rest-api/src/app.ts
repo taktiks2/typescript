@@ -1,8 +1,11 @@
 import { OpenAPIHono } from '@hono/zod-openapi';
 import { swaggerUI } from '@hono/swagger-ui';
-import v1 from './modules/v1';
-import { helloMiddleware } from './middlewares/helloMiddle';
+import v1 from '@/modules/v1';
+import { helloMiddleware } from '@/middlewares/helloMiddle';
 import { cors } from 'hono/cors';
+import { getConfig } from '@/utils/config';
+
+const config = getConfig();
 
 const app = new OpenAPIHono();
 
@@ -24,6 +27,6 @@ app.doc('/doc', {
 app.get('/ui', swaggerUI({ url: '/doc' }));
 
 export default {
-  port: process.env.PORT || 3000,
+  port: config.serverPort || 3000,
   fetch: app.fetch,
 };
