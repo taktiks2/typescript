@@ -1,0 +1,13 @@
+.openapi-generator-ignore
+apis/PostsApi.ts
+apis/UsersApi.ts
+apis/index.ts
+index.ts
+models/V1PostsIdGet200Response.ts
+models/V1PostsIdPutRequest.ts
+models/V1PostsPostRequest.ts
+models/V1UsersIdGet200Response.ts
+models/V1UsersIdPutRequest.ts
+models/V1UsersPostRequest.ts
+models/index.ts
+runtime.ts
